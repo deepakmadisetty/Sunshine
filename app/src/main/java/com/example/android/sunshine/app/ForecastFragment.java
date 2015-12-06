@@ -78,13 +78,13 @@ public class ForecastFragment extends Fragment {
 
         // Create some dummy data for the ListView.  Here's a sample weekly forecast
         String[] data = { };
-        List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
+        List<String> weekForecast = new ArrayList<>(Arrays.asList(data));
 
         // Now that we have some dummy forecast data, create an ArrayAdapter.
         // The ArrayAdapter will take data from a source (like our dummy forecast) and
         // use it to populate the ListView it's attached to.
         mForecastAdapter =
-                new ArrayAdapter<String>(
+                new ArrayAdapter<>(
                         getActivity(), // The current context (this activity)
                         R.layout.list_item_forecast, // The name of the layout ID.
                         R.id.list_item_forecast_text_view, // The ID of the textview to populate.
@@ -116,6 +116,11 @@ public class ForecastFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        updateWeather();
+    }
     private void updateWeather() {
 
         FetchWeatherTask weatherTask = new FetchWeatherTask();
@@ -160,6 +165,7 @@ public class ForecastFragment extends Fragment {
             long roundedLow = Math.round(low);
 
             String highLowStr = roundedHigh + "/" + roundedLow;
+
             return highLowStr;
         }
 
@@ -193,14 +199,14 @@ public class ForecastFragment extends Fragment {
                 final String FORMAT_PARAM = "mode";
                 final String UNITS_PARAM = "units";
                 final String DAYS_PARAM = "cnt";
-                final String APPID_PARAM = "APPID";
+                final String APP_ID_PARAM = "APPID";
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
                         .appendQueryParameter(QUERY_PARAM, params[0])
                         .appendQueryParameter(FORMAT_PARAM, format)
                         .appendQueryParameter(UNITS_PARAM, units)
                         .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
-                        .appendQueryParameter(APPID_PARAM, "071ba1385e046c3cdc69e839e37a08a6")
+                        .appendQueryParameter(APP_ID_PARAM, BuildConfig.OPEN_WEATHER_MAP_API_KEY)
                         .build();
 
                 URL url = new URL(builtUri.toString());
@@ -338,9 +344,7 @@ public class ForecastFragment extends Fragment {
         protected void onPostExecute(String[] result) {
             if (result != null) {
                 mForecastAdapter.clear();
-                for(String dayForecastStr : result) {
-                    mForecastAdapter.add(dayForecastStr);
-                }
+                mForecastAdapter.addAll(result);
                 // New data is back from the server.  Hooray!
             }
         }
