@@ -56,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        if(id == R.id.action_map) {
+            openPreferredLocationInMap();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
