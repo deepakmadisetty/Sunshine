@@ -4,7 +4,7 @@
     <string name="action_map">Map Location</string>
     <string name="action_refresh" translatable="false">Refresh</string>
     <string name="action_share">Share</string>
-    <string name="title_activity_detail">Detail</string>
+    <string name="title_activity_detail">Details</string>
     <string name="title_activity_setting">Settings</string>
     <string name="pref_location_label">Location</string>
     <string name="pref_location_key" translatable= "false">location</string>
