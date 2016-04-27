@@ -6,9 +6,6 @@
     <string name="action_share">Share</string>
     <string name="title_activity_detail">Details</string>
     <string name="title_activity_setting">Settings</string>
-    <string name="pref_location_label">Location</string>
-    <string name="pref_location_key" translatable= "false">location</string>
-    <string name="pref_location_default" translatable= "false">77054</string>
     <string name="pref_units_label">Temperature Units</string>
     <string name="pref_units_key">units</string>
     <string name="pref_units_metric">metric</string>
@@ -49,6 +46,18 @@
 
     <!-- Notification Format -->
     <string name="format_notification">Forecast: <xliff:g id="condition">%1$s</xliff:g> High: <xliff:g id="high">%2$s</xliff:g> Low: <xliff:g id="low">%3$s</xliff:g></string>
+
+    <!-- Label for the location preference [CHAR LIMIT=30] -->
+    <string name="pref_location_label">Location</string>
+
+    <!-- Key name for storing location in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_location_key" translatable="false">location</string>
+
+    <!-- Key name for storing location status in SharedPreferences -->
+    <string name="pref_location_status_key" translatable="false">loc-status</string>
+
+    <!-- Default postal code for location preference [CHAR LIMIT=NONE] -->
+    <string name="pref_location_default" translatable="false">77054</string>
 
     <!-- Strings related to Notification preference -->
     <string name="pref_last_notification">last_notification</string>
