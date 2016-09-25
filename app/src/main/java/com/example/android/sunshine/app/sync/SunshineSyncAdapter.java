@@ -228,7 +228,7 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
 
             if( forecastJson.has(OWM_MESSAGE_CODE) ) {
                 int errorCode = forecastJson.getInt(OWM_MESSAGE_CODE);
-
+                System.out.println(errorCode);
                 switch (errorCode) {
                     case HttpURLConnection.HTTP_OK:
                         break;
@@ -240,6 +240,7 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
                         return;
                 }
             }
+
             JSONArray weatherArray = forecastJson.getJSONArray(OWM_LIST);
 
             JSONObject cityJson = forecastJson.getJSONObject(OWM_CITY);
@@ -570,6 +571,7 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     public static void initializeSyncAdapter(Context context) {
+
         getSyncAccount(context);
     }
 
